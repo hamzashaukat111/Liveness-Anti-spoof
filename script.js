@@ -43,6 +43,11 @@ $(document).ready(function () {
         var notAliveProbability1 = results[0].notAliveProbability;
         var notAliveProbability2 = results[1].notAliveProbability;
 
+        console.log("Alive probability 1: " + aliveProbability1);
+        console.log("Alive probability 2: " + aliveProbability2);
+        console.log("Not alive probability 1: " + notAliveProbability1);
+        console.log("Not alive probability 2: " + notAliveProbability2);
+
         var resultContainer = document.getElementById("resultContainer");
         var resultHeading = document.getElementById("resultHeading");
         resultContainer.innerHTML = "";
@@ -88,6 +93,7 @@ $(document).ready(function () {
           "Prediction-Key": "6d9918f13de44cdbb32081baaf81387c",
         },
         success: function (response) {
+          console.log(response);
           var aliveProbability = 0;
           var notAliveProbability = 0;
           var predictions = response.predictions;
