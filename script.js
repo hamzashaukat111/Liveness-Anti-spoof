@@ -27,7 +27,7 @@ $(document).ready(function () {
       canvas.toBlob(function (blob) {
         var formData = new FormData();
         formData.append("image", blob);
-        resolve(formData);
+        resolve(blob);
       });
     });
   }
@@ -81,12 +81,12 @@ $(document).ready(function () {
       });
   }
 
-  function processImage(formData) {
+  function processImage(blob) {
     return new Promise(function (resolve, reject) {
       $.ajax({
         url: "https://cvscanfood-prediction.cognitiveservices.azure.com/customvision/v3.0/Prediction/6ed5e91e-7c3c-44db-bcba-651a7bbb76f6/classify/iterations/Iteration1/image",
         type: "POST",
-        data: formData,
+        data: blob,
         processData: false,
         contentType: false,
         headers: {
@@ -102,7 +102,7 @@ $(document).ready(function () {
               var prediction = predictions[i];
               if (prediction.tagName === "Alive") {
                 aliveProbability = prediction.probability;
-              } else if (prediction.tagName === "NotAlive") {
+              } else if (prediction.tagName === "notAlive") {
                 notAliveProbability = prediction.probability;
               }
             }
