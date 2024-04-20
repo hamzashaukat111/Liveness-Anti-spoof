@@ -66,9 +66,14 @@ $(document).ready(function () {
 
       if (aliveProbability1 < notAliveProbability1) {
         // Liveness check failed: No person detected
+        console.log("aliveProbability1: ", aliveProbability1);
+        console.log("aliveProbability2: ", aliveProbability2);
+        console.log("notAliveProbability1: ", notAliveProbability1);
         displayResult("Liveness check failed: No person detected");
       } else {
         // Liveness check passed
+        console.log("aliveProbability1: ", aliveProbability1);
+        console.log("notAliveProbability1: ", notAliveProbability1);
         displayResult("Liveness check passed");
       }
     }
