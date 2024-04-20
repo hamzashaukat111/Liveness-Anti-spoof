@@ -25,7 +25,8 @@ $(document).ready(function () {
       $.ajax({
         url: "https://cvscanfood-prediction.cognitiveservices.azure.com/customvision/v3.0/Prediction/6ed5e91e-7c3c-44db-bcba-651a7bbb76f6/classify/iterations/Iteration1/image",
         type: "POST",
-        data: formData,
+        // data: formData,
+        data: "fkperson.jpg",
         processData: false,
         contentType: false,
         headers: {
@@ -57,6 +58,9 @@ $(document).ready(function () {
 
     if (aliveProbability1 === aliveProbability2) {
       // Liveness check failed: Still images
+      console.log("(still) aliveProbability1: ", aliveProbability1);
+      console.log("(still) aliveProbability2: ", aliveProbability2);
+
       displayResult("Liveness check failed: Still images");
     } else {
       // Compare Alive probability of the first response with Not Alive probability of the first response
@@ -66,14 +70,14 @@ $(document).ready(function () {
 
       if (aliveProbability1 < notAliveProbability1) {
         // Liveness check failed: No person detected
-        console.log("aliveProbability1: ", aliveProbability1);
-        console.log("aliveProbability2: ", aliveProbability2);
-        console.log("notAliveProbability1: ", notAliveProbability1);
+        console.log("(no person) aliveProbability1: ", aliveProbability1);
+        console.log("(no person) aliveProbability2: ", aliveProbability2);
+        console.log("(no person) notAliveProbability1: ", notAliveProbability1);
         displayResult("Liveness check failed: No person detected");
       } else {
         // Liveness check passed
-        console.log("aliveProbability1: ", aliveProbability1);
-        console.log("notAliveProbability1: ", notAliveProbability1);
+        console.log("(passeed) aliveProbability1: ", aliveProbability1);
+        console.log("(passeed) notAliveProbability1: ", notAliveProbability1);
         displayResult("Liveness check passed");
       }
     }
