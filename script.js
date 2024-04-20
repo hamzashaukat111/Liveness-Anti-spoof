@@ -72,6 +72,9 @@ $(document).ready(function () {
         displayResult("Liveness check passed");
       }
     }
+
+    // Clear responses array for the next capture
+    responses = [];
   }
 
   function displayResult(message) {
@@ -80,6 +83,9 @@ $(document).ready(function () {
   }
 
   captureButton.addEventListener("click", function () {
+    // Clear previous responses
+    responses = [];
+
     // Capture the first image
     captureImageAndProcess();
 
