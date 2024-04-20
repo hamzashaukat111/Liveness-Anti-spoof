@@ -79,6 +79,36 @@ $(document).ready(function () {
     resultHeading.innerHTML = '<h2 class="result-heading">' + message + "</h2>";
   }
 
+  //   captureButton.addEventListener("click", function () {
+  //     // Clear previous responses
+  //     responses = [];
+
+  //     if (imageInput.files && imageInput.files[0]) {
+  //       // If a local image is selected, use it
+  //       var imageBlob = imageInput.files[0];
+  //       captureImageAndProcess(imageBlob);
+
+  //       // Capture the second image after 2 seconds
+  //       setTimeout(function () {
+  //         captureImageAndProcess(imageBlob);
+  //       }, 2000);
+  //     } else {
+  //       // Capture images from video as before
+  //       context.drawImage(video, 0, 0, 270, 150);
+  //       canvas.toBlob(function (blob) {
+  //         captureImageAndProcess(blob);
+  //       });
+
+  //       // Capture the second image after 2 seconds
+  //       setTimeout(function () {
+  //         context.drawImage(video, 0, 0, 270, 150);
+  //         canvas.toBlob(function (blob) {
+  //           captureImageAndProcess(blob);
+  //         });
+  //       }, 2000);
+  //     }
+  //   });
+
   captureButton.addEventListener("click", function () {
     // Clear previous responses
     responses = [];
@@ -87,12 +117,30 @@ $(document).ready(function () {
       // If a local image is selected, use it
       var imageBlob = imageInput.files[0];
       captureImageAndProcess(imageBlob);
+
+      // Capture the second image after 2 seconds
+      setTimeout(function () {
+        captureImageAndProcess(imageBlob);
+      }, 2000);
     } else {
-      // Capture the first image from video
+      // Capture images from video as before
       context.drawImage(video, 0, 0, 270, 150);
       canvas.toBlob(function (blob) {
         captureImageAndProcess(blob);
       });
+
+      // Capture the second image after 2 seconds
+      setTimeout(function () {
+        context.drawImage(video, 0, 0, 270, 150);
+        canvas.toBlob(function (blob) {
+          captureImageAndProcess(blob);
+        });
+      }, 2000);
+      //        // Capture images from video as before
+      //   context.drawImage(video, 0, 0, 270, 150);
+      //   canvas.toBlob(function (blob) {
+      //     captureImageAndProcess(blob);
+      //   });
     }
 
     // Capture the second image after 2 seconds
