@@ -54,6 +54,8 @@ $(document).ready(function () {
 
     if (aliveProbability1 === aliveProbability2) {
       // Liveness check failed: Still images
+      console.log("(spoof) aliveProbability1: ", aliveProbability1);
+      console.log("(spoof) aliveProbability2: ", aliveProbability2);
       displayResult("Liveness check failed: Still images");
     } else {
       // Compare Alive probability of the first response with Not Alive probability of the first response
@@ -63,9 +65,13 @@ $(document).ready(function () {
 
       if (aliveProbability1 < notAliveProbability1) {
         // Liveness check failed: No person detected
+        console.log("(No person) aliveProbability1: ", aliveProbability1);
+        console.log("(No person) notAliveProbability1: ", notAliveProbability1);
         displayResult("Liveness check failed: No person detected");
       } else {
         // Liveness check passed
+        console.log("(Pass) aliveProbability1: ", aliveProbability1);
+        console.log("(Pass) notAliveProbability1: ", notAliveProbability1);
         displayResult("Liveness check passed");
       }
     }
@@ -78,36 +84,6 @@ $(document).ready(function () {
     var resultHeading = document.getElementById("resultHeading");
     resultHeading.innerHTML = '<h2 class="result-heading">' + message + "</h2>";
   }
-
-  //   captureButton.addEventListener("click", function () {
-  //     // Clear previous responses
-  //     responses = [];
-
-  //     if (imageInput.files && imageInput.files[0]) {
-  //       // If a local image is selected, use it
-  //       var imageBlob = imageInput.files[0];
-  //       captureImageAndProcess(imageBlob);
-
-  //       // Capture the second image after 2 seconds
-  //       setTimeout(function () {
-  //         captureImageAndProcess(imageBlob);
-  //       }, 2000);
-  //     } else {
-  //       // Capture images from video as before
-  //       context.drawImage(video, 0, 0, 270, 150);
-  //       canvas.toBlob(function (blob) {
-  //         captureImageAndProcess(blob);
-  //       });
-
-  //       // Capture the second image after 2 seconds
-  //       setTimeout(function () {
-  //         context.drawImage(video, 0, 0, 270, 150);
-  //         canvas.toBlob(function (blob) {
-  //           captureImageAndProcess(blob);
-  //         });
-  //       }, 2000);
-  //     }
-  //   });
 
   captureButton.addEventListener("click", function () {
     // Clear previous responses
@@ -136,11 +112,6 @@ $(document).ready(function () {
           captureImageAndProcess(blob);
         });
       }, 2000);
-      //        // Capture images from video as before
-      //   context.drawImage(video, 0, 0, 270, 150);
-      //   canvas.toBlob(function (blob) {
-      //     captureImageAndProcess(blob);
-      //   });
     }
 
     // Capture the second image after 2 seconds
@@ -155,29 +126,3 @@ $(document).ready(function () {
     }, 2000);
   });
 });
-
-// if (aliveProbability1 === aliveProbability2) {
-//     // Liveness check failed: Still images
-//     console.log("(still) aliveProbability1: ", aliveProbability1);
-//     console.log("(still) aliveProbability2: ", aliveProbability2);
-
-//     displayResult("Liveness check failed: Still images");
-//   } else {
-//     // Compare Alive probability of the first response with Not Alive probability of the first response
-//     var notAliveProbability1 = response1.predictions.find(
-//       (prediction) => prediction.tagName === "notalive"
-//     ).probability;
-
-//     if (aliveProbability1 < notAliveProbability1) {
-//       // Liveness check failed: No person detected
-//       console.log("(no person) aliveProbability1: ", aliveProbability1);
-//       console.log("(no person) aliveProbability2: ", aliveProbability2);
-//       console.log("(no person) notAliveProbability1: ", notAliveProbability1);
-//       displayResult("Liveness check failed: No person detected");
-//     } else {
-//       // Liveness check passed
-//       console.log("(passeed) aliveProbability1: ", aliveProbability1);
-//       console.log("(passeed) notAliveProbability1: ", notAliveProbability1);
-//       displayResult("Liveness check passed");
-//     }
-//   }
